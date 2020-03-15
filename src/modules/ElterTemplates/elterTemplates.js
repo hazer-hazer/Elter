@@ -4,16 +4,21 @@ module.exports = function(){
 	// Add (req, req, next)
 
 	let html = `
-		
-		<html>
-			{{= name }}
+		<tag>
+			{{ var a = [0, 1, 2] }}
 
-			{{= nick }}
-		</html>
+			{{ for(let x of a){ }}
+				{{= x }}
+			{{ } }}
+		</tag>
 	`;
 
-	parser(html, {
+	const templ = parser(html, {
 		name: 'Agvin',
 		nick: 'hazer'
+	}, {
+		echo_mod: '-'
 	});
+
+	console.log(templ)
 }
